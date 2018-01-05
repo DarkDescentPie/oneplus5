@@ -980,3 +980,10 @@
 	};
 };
 
+&snd_934x {
+	status = "disabled";
+};
+
+&pm8005_gpios {
+	status = "disabled";
+};
