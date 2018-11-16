@@ -1091,8 +1091,4 @@
 		status = "ok";
 	};
 };
-&wsa_spkr_sd2 {
-	pinctrl-0 = <>;
-	pinctrl-1 = <>;
-};
 
