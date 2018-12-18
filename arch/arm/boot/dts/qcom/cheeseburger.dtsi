@@ -165,10 +165,6 @@
 		pinctrl-1 = <&oem_rf_cable_suspend>;
 	};
 
-	qcom,qbt1000 {
-        status = "disabled";
-	};
-
 	/* Fingerprint */
 	fpc_fpc1020 {
 		compatible = "fpc,fpc1020";
