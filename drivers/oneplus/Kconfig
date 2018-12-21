@@ -1,6 +1,6 @@
 config OEM_DEBUG_SUPPORT
-        bool
-        default y
+	bool "OEM Debug Support"
+	default y
 
 config OEM_TRACE_SUPPORT
 	default y
