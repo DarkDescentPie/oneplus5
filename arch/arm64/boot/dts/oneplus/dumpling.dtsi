@@ -329,16 +329,6 @@
 				0x0f 0x240>;
 	};
 
-	force_enable_serial {
-		compatible = "oem,force_serial";
-	};
-	oem_serial_pinctrl {
-		compatible = "oem,oem_serial_pinctrl";
-		pinctrl-names = "uart_pinctrl_active",
-		"uart_pinctrl_deactive";
-		pinctrl-0 = <&uart_console_active>;
-		pinctrl-1 = <&uart_console_deactive>;
-	};
 	bootloader_log {
 		compatible = "bootloader_log";
 		linux,contiguous-region = <&bootloader_log_mem>;
@@ -945,32 +935,6 @@
 		};
 	};
 };
-
-
-/*Anderson-Config_UARTPIN_as_GPIO*[*/
-&soc {
-	tlmm: pinctrl@03400000 {
-		uart_console_deactive: uart_console_deactive {
-			mux {
-				pins = "gpio4", "gpio5";
-				function = "gpio";
-			};
-
-			config {
-				pins = "gpio4", "gpio5";
-				drive-strength = <2>;
-				bias-pull-down;
-			};
-		};
-	};
-};
-
-&uartblsp2dm1 {
-	pinctrl-names = "uart_active", "uart_deactive";
-	pinctrl-0 = <&uart_console_active>;
-	pinctrl-1 = <&uart_console_deactive>;
-};
-/*Anderson-Config_UARTPIN_as_GPIO*]**/
 
 /*pcie 0 don't used,gpio 37 will used in nfc.*/
 /*but gpio37 will request in pcie0. so disable it*/

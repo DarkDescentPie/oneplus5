@@ -151,7 +151,8 @@
 		tristate,gpio_key2 = <&tlmm 42 0x00>;
 		tristate,gpio_key3 = <&tlmm 26 0x00>;
 
-		pinctrl-names = "pmx_tri_state_key_active", "pmx_tri_state_key_suspend";
+		pinctrl-names = "pmx_tri_state_key_active",
+		"pmx_tri_state_key_suspend";
 		pinctrl-0 = <&tri_state_key_active>;
 		pinctrl-1 = <&tri_state_key_suspend>;
 	};
@@ -160,7 +161,8 @@
 		compatible = "oem,rf_cable";
 		interrupt-parent = <&tlmm>;
 		rf,cable-gpio    = <&tlmm 36 0>;
-		pinctrl-names = "oem_rf_cable_active", "oem_rf_cable_suspend";
+		pinctrl-names = "oem_rf_cable_active",
+		"oem_rf_cable_suspend";
 		pinctrl-0 = <&oem_rf_cable_active >;
 		pinctrl-1 = <&oem_rf_cable_suspend>;
 	};
@@ -171,9 +173,9 @@
 		interrupt-parent = <&tlmm>;
 		fpc,irq-gpio    = <&tlmm 121 0>;
 		/*
-		fpc,gpio_id0    = <&tlmm 39 0>;
-		fpc,gpio_id1    = <&tlmm 41 0>;
-		fpc,gpio_id2    = <&tlmm 63 0>;
+		*fpc,gpio_id0    = <&tlmm 39 0>;
+		*fpc,gpio_id1    = <&tlmm 41 0>;
+		*fpc,gpio_id2    = <&tlmm 63 0>;
 		*/
 	};
 
@@ -258,11 +260,11 @@
 			qcom,soc-low-threshold = <5>;
 		};
 	};
-    ramoops {
-        compatible = "ramoops";
-        status = "ok";
-        memory-region = <&ramoops_mem>;
-    };
+	ramoops {
+		compatible = "ramoops";
+		status = "ok";
+		memory-region = <&ramoops_mem>;
+	};
 
 	/* Add  0x9c 0x21C, 0xf0 0x23C */
 	qusb_phy0: qusb@c012000 {
@@ -277,25 +279,12 @@
 				0xf0 0x23C
 				0x0f 0x240>;
 	};
-	force_enable_serial {
-		compatible = "oem,force_serial";
+
+	bootloader_log {
+		compatible = "bootloader_log";
+		linux,contiguous-region = <&bootloader_log_mem>;
 	};
-	oem_serial_pinctrl {
-		compatible = "oem,oem_serial_pinctrl";
-		pinctrl-names = "uart_pinctrl_active", "uart_pinctrl_deactive";
-		pinctrl-0 = <&uart_console_active>;
-		pinctrl-1 = <&uart_console_deactive>;
-	};
-    bootloader_log {
-        compatible = "bootloader_log";
-        linux,contiguous-region = <&bootloader_log_mem>;
-    };
 };
-
-
-
-
-
 
 &pm8998_gpios {
 	/* GPIO 5 for Vol- Key */
@@ -834,31 +823,6 @@
 	};
 };
 
-/*Anderson-Config_UARTPIN_as_GPIO*[*/
-&soc {
-	tlmm: pinctrl@03400000 {
-		uart_console_deactive: uart_console_deactive {
-			mux {
-				pins = "gpio4", "gpio5";
-				function = "gpio";
-			};
-
-			config {
-				pins = "gpio4", "gpio5";
-				drive-strength = <2>;
-				bias-pull-down;
-			};
-		};
-	};
-};
-
-&uartblsp2dm1 {
-	pinctrl-names = "uart_active", "uart_deactive";
-	pinctrl-0 = <&uart_console_active>;
-	pinctrl-1 = <&uart_console_deactive>;
-};
-/*Anderson-Config_UARTPIN_as_GPIO*]**/
-
 /* External Thermistors */
 &pm8998_vadc {
 	chan@4e {
@@ -930,7 +894,6 @@
 	};
 };
 
-
 /*pcie 0 don't used,gpio 37 will used in nfc.*/
 /*but gpio37 will request in pcie0. so disable it*/
 &pcie0 {
@@ -980,28 +943,3 @@
 		clock-names = "ref_clk";
 	};
 };
-
-/*Anderson-Config_UARTPIN_as_GPIO*[*/
-&soc {
-	tlmm: pinctrl@03400000 {
-		uart_console_deactive: uart_console_deactive {
-			mux {
-				pins = "gpio4", "gpio5";
-				function = "gpio";
-			};
-
-			config {
-				pins = "gpio4", "gpio5";
-				drive-strength = <2>;
-				bias-disable;
-			};
-		};
-	};
-};
-
-&uartblsp2dm1 {
-	pinctrl-names = "uart_active", "uart_deactive";
-	pinctrl-0 = <&uart_console_active>;
-	pinctrl-1 = <&uart_console_deactive>;
-};
-/*Anderson-Config_UARTPIN_as_GPIO*]**/
