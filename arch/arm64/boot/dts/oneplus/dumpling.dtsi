@@ -11,49 +11,48 @@
  */
 
 #include "pxlw-iris-settings.dtsi"
+
 / {
 	reserved-memory {
 		ramoops_mem: ramoops_mem@ac000000 {
 			reg = <0 0xAC000000 0 0x00200000>;
 			label = "ramoops_mem";
 		};
+
 		param_mem: param_mem@ac200000 {
 			reg = <0 0xAC200000 0 0x00100000>;
 			label = "param_mem";
 		};
+
 		mtp_mem: mtp_mem@ac400000 {
 			reg = <0 0xAC400000 0 0x00B00000>;
 			label = "mtp_mem";
 		};
-		bootloader_log_mem: bootloader_log_mem@9fff7000 {
-			reg = <0 0x9FFF7000 0 0x00100000>;
-			label = "bootloader_log_mem";
-		};
 	};
 };
 
-&pil_ipa_gpu_mem{
-    reg = <0 0x95600000 0 0x100000>;//move start address +4M to match modem aligned
+&pil_ipa_gpu_mem {
+	reg = <0 0x95600000 0 0x100000>;
 };
 
-&pil_slpi_mem{
-    reg = <0 0x94700000 0 0xf00000>;//move start address +4M to match modem aligned
+&pil_slpi_mem {
+	reg = <0 0x94700000 0 0xf00000>;
 };
 
-&pil_mba_mem{
-    reg = <0 0x94500000 0 0x200000>;//move start address +4M to match modem aligned
+&pil_mba_mem {
+	reg = <0 0x94500000 0 0x200000>;
 };
 
-&pil_video_mem{
-    reg = <0 0x94000000 0 0x500000>;//move start address +4M to match modem aligned
+&pil_video_mem {
+	reg = <0 0x94000000 0 0x500000>;
 };
 
-&modem_mem{
-    reg = <0 0x8d000000 0 0x7000000>;//move start address +4M to match modem aligned
+&modem_mem {
+	reg = <0 0x8d000000 0 0x7000000>;
 };
 
-&pil_adsp_mem{
-    reg = <0 0x8b200000 0 0x1e00000>; //increae 4M size by oneplus
+&pil_adsp_mem {
+	reg = <0 0x8b200000 0 0x1e00000>;
 };
 
 /* I/O */
@@ -327,11 +326,6 @@
 				0x9c 0x21C
 				0xf0 0x23C
 				0x0f 0x240>;
-	};
-
-	bootloader_log {
-		compatible = "bootloader_log";
-		linux,contiguous-region = <&bootloader_log_mem>;
 	};
 };
 
