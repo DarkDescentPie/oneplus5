@@ -1,9 +1,0 @@
-Bootloader_log
-
-Required properties:
-- compatible : should be "bootloader_log"
-
-Example:
-	bootloader_log {
-		compatible = "bootloader_log";
-	};
