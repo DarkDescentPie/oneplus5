@@ -4,7 +4,6 @@
 
 # Each configuration option enables a list of files.
 
-#fingerprint_detect should before fpc1022
-obj-$(CONFIG_FINGERPRINT_DETECT)    += fingerprint_detect/
-obj-$(CONFIG_FINGERPRINT_FPC)	    += fpc/
-obj-$(CONFIG_FINGERPRINT_GOODIX)	+= goodix/
+obj-$(CONFIG_INPUT_FINGERPRINT_DETECT)	+= fingerprint_detect/
+obj-$(CONFIG_INPUT_FPC1020)		+= fpc1020_tee.o
+obj-$(CONFIG_INPUT_GOODIX_FP)		+= goodix_fp/

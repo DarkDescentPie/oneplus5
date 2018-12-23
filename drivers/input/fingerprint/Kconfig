@@ -11,16 +11,12 @@ menuconfig INPUT_FINGERPRINT
 
 if INPUT_FINGERPRINT
 
-config FINGERPRINT_DETECT
-	tristate "fingerprint detect support"
+source "drivers/input/fingerprint/fingerprint_detect/Kconfig"
+
+config INPUT_FPC1020
+	tristate "FPC 1020 Driver"
 	depends on SPI_MASTER
 
-config FINGERPRINT_FPC
-   tristate "fpc fingerprint sensor support"
-   depends on SPI_MASTER
-
-config FINGERPRINT_GOODIX
-	tristate "goodix fingerprint sensor support"
-	depends on SPI_MASTER
+source "drivers/input/fingerprint/goodix_fp/Kconfig"
 
 endif
