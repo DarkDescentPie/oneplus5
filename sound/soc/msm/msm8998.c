@@ -3704,13 +3704,12 @@ static int msm_audrx_init(struct snd_soc_pcm_runtime *rtd)
 		return ret;
 	}
 
-	if (op_project_17801) {
+	if (op_project_17801)
 		snd_soc_dapm_new_controls(dapm, msm_dapm_widgets_17801,
 					ARRAY_SIZE(msm_dapm_widgets_17801));
-	} else {
+	else
 		snd_soc_dapm_new_controls(dapm, msm_dapm_widgets,
 					ARRAY_SIZE(msm_dapm_widgets));
-	}
 
 	if (!strcmp(dev_name(codec_dai->dev), "tasha_codec"))
 		snd_soc_dapm_add_routes(dapm, wcd_audio_paths_tasha,
@@ -3889,7 +3888,6 @@ static void *def_tasha_mbhc_cal(void)
 
 #define S(X, Y) ((WCD_MBHC_CAL_PLUG_TYPE_PTR(tasha_wcd_cal)->X) = (Y))
 	S(v_hs_max, 1700);
-
 #undef S
 #define S(X, Y) ((WCD_MBHC_CAL_BTN_DET_PTR(tasha_wcd_cal)->X) = (Y))
 	S(num_btn, WCD_MBHC_DEF_BUTTONS);
@@ -3898,6 +3896,7 @@ static void *def_tasha_mbhc_cal(void)
 	btn_cfg = WCD_MBHC_CAL_BTN_DET_PTR(tasha_wcd_cal);
 	btn_high = ((void *)&btn_cfg->_v_btn_low) +
 		(sizeof(btn_cfg->_v_btn_low[0]) * btn_cfg->num_btn);
+
 	btn_high[0] = 75;
 	btn_high[1] = 213;
 	btn_high[2] = 450;
@@ -4360,7 +4359,6 @@ static int msm_set_pinctrl(struct msm_pinctrl_info *pinctrl_info,
 
 	if (pinctrl_info->pinctrl == NULL) {
 		pr_debug("%s: pinctrl_info->pinctrl is NULL\n", __func__);
-		/*ret = -EINVAL;*/
 		goto err;
 	}
 
@@ -6916,13 +6914,13 @@ static int msm_audrx_stub_init(struct snd_soc_pcm_runtime *rtd)
 		return ret;
 	}
 
-	if (op_project_17801) {
+	if (op_project_17801)
 		snd_soc_dapm_new_controls(dapm, msm_dapm_widgets_17801,
 					ARRAY_SIZE(msm_dapm_widgets_17801));
-	} else {
+	else
 		snd_soc_dapm_new_controls(dapm, msm_dapm_widgets,
 					ARRAY_SIZE(msm_dapm_widgets));
-	}
+
 	return 0;
 }
 
@@ -7256,6 +7254,7 @@ static int msm_init_wsa_dev(struct platform_device *pdev,
 	int ret = 0;
 
 	return ret;
+
 	/* Get maximum WSA device count for this platform */
 	ret = of_property_read_u32(pdev->dev.of_node,
 				   "qcom,wsa-max-devs", &wsa_max_devs);

@@ -94,7 +94,6 @@ int print_calibration(Tfa98xx_handle_t handle, char *str, size_t size)
 				handles_local[handle].mohm[0],
 				handles_local[handle].mohm[1]);
 }
-/*wangdongdong@MultiMedia,2016/11/30,add for calibrate node*/
 int print_calibration_modify(Tfa98xx_handle_t handle, char *str, size_t size)
 {
         return snprintf(str, size, "%d:%d\n",
