@@ -41,7 +41,7 @@
 #include <linux/poll.h>
 #include <linux/regulator/consumer.h>
 #include "p73.h"
-#include "../pn5xx.h"
+#include "../pn5xx/pn5xx.h"
 
 extern long  pn544_dev_ioctl(struct file *filp, unsigned int cmd,
         unsigned long arg);

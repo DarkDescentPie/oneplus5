@@ -1,0 +1,5 @@
+config NFC_PN80T
+	tristate "NXP PN80T eSE Driver"
+	depends on I2C
+	depends on SPI
+	depends on NFC_PN5XX
