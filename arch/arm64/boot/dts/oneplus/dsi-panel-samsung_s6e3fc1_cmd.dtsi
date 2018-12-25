@@ -120,6 +120,8 @@
 		qcom,mdss-dsi-panel-seria-num-day-index = <13>;
 		qcom,mdss-dsi-panel-seria-num-hour-index = <14>;
 		qcom,mdss-dsi-panel-seria-num-min-index = <15>;
+		qcom,ulps-enabled;
+		qcom,panel-allow-phy-poweroff;
 
 		qcom,mdss-dsi-panel-srgb-on-command = [
 			39 01 00 00 00 00 03 f0 5A 5A

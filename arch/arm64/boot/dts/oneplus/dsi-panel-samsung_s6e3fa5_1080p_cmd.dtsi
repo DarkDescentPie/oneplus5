@@ -113,6 +113,8 @@
 		qcom,mdss-dsi-read-reg-enable-command-state = "dsi_lp_mode";
 		qcom,mdss-dsi-read-reg-disable-command-state = "dsi_lp_mode";
 		qcom,mdss-dsi-id-command-state = "dsi_lp_mode";
+		qcom,ulps-enabled;
+		qcom,panel-allow-phy-poweroff;
 
 		qcom,mdss-dsi-panel-srgb-on-command = [
 			39 01 00 00 00 00 03 f0 5A 5A
